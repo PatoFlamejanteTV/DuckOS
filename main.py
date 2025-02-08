@@ -40,6 +40,9 @@ def main():
         elif command == "test/anim":
             test_anim()
 
+        elif command == "test/anim2":
+            test_anim2()
+
         elif command == "ls" or command == "dir":
             cpp_commands.cpp_list_files()
 

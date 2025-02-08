@@ -1,7 +1,7 @@
 import time
 
 def test_anim():
-    while not KeyboardInterrupt:  # Loop until 'q' is pressed
+    while not KeyboardInterrupt:
         print(".  ")
         time.sleep(0.1)
         print(" . ")
@@ -9,6 +9,17 @@ def test_anim():
         print("  .")
         time.sleep(0.1)
         print(" . ")
+        time.sleep(0.1)
+
+def test_anim2():
+    while not KeyboardInterrupt:
+        print("|")
+        time.sleep(0.1)
+        print("/")
+        time.sleep(0.1)
+        print("-")
+        time.sleep(0.1)
+        print("\\")
         time.sleep(0.1)
 
 if __name__ == "__main__":
