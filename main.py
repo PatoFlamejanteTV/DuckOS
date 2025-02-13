@@ -6,7 +6,7 @@ from commands.about import *
 from commands.test.anim import *
 from commands.file_ops import *
 
-# Load the shared library
+# C++ Commands Compiled file
 cpp_commands = ctypes.CDLL(os.path.join(os.path.dirname(__file__), 'cpp_commands.so'))
 
 # Define the argument and return types for the writefile function
@@ -44,17 +44,17 @@ def main():
             test_anim2()
 
         elif command == "ls" or command == "dir":
-            cpp_commands.cpp_list_files()
+            cpp_commands.cppls()
 
         elif command.startswith("cat"):
             filename = command[3:].strip()
-            cpp_commands.cpp_show_file_content(filename.encode('utf-8'))
+            cpp_commands.cppcat(filename.encode('utf-8'))
 
-        elif command.startswith("write"):
-            parts = command[5:].strip().split(' ', 1)
+        elif command.startswith("write "):
+            parts = command[6:].strip().split(' ', 1)
             if len(parts) == 2:
                 filename, content = parts
-                cpp_commands.writefile(filename.encode('utf-8'), content.encode('utf-8'))
+                cpp_commands.cpptouch(filename.encode('utf-8'), content.encode('utf-8'))
             else:
                 print("Usage: write <filename> <content>")
 

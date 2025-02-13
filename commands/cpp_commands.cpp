@@ -4,11 +4,11 @@
 
 extern "C" {
 
-void cpp_list_files() {
+void cppls() {
     system("ls");
 }
 
-void cpp_show_file_content(const char* filename) {
+void cppcat(const char* filename) {
     std::ifstream file(filename);
     if (file.is_open()) {
         std::string line;
@@ -21,7 +21,7 @@ void cpp_show_file_content(const char* filename) {
     }
 }
 
-void writefile(const char* FILENAME, const char* CONTENT) {
+void cpptouch(const char* FILENAME, const char* CONTENT) {
     std::ofstream file(FILENAME);
     file << CONTENT;
     file.close();
