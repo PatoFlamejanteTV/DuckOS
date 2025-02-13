@@ -10,8 +10,8 @@ from commands.file_ops import *
 cpp_commands = ctypes.CDLL(os.path.join(os.path.dirname(__file__), 'cpp_commands.so'))
 
 # Define the argument and return types for the writefile function
-cpp_commands.writefile.argtypes = [ctypes.c_char_p, ctypes.c_char_p]
-cpp_commands.writefile.restype = None
+cpp_commands.cpptouch.argtypes = [ctypes.c_char_p, ctypes.c_char_p]
+cpp_commands.cpptouch.restype = None
 
 def main():
 
@@ -47,14 +47,14 @@ def main():
             cpp_commands.cppls()
 
         elif command.startswith("cat"):
-            filename = command[3:].strip()
-            cpp_commands.cppcat(filename.encode('utf-8'))
+            filename = command[4:].strip()
+            cpp_commands.cppcat(filename)
 
         elif command.startswith("write "):
             parts = command[6:].strip().split(' ', 1)
             if len(parts) == 2:
                 filename, content = parts
-                cpp_commands.cpptouch(filename.encode('utf-8'), content.encode('utf-8'))
+                cpp_commands.cpptouch(filename, content)
             else:
                 print("Usage: write <filename> <content>")
 
